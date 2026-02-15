@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Das Röstzimmer | Salzburgs Artisanal Coffee Roastery</title>
+    <meta name="description"
+        content="Hausgerösteter Kaffee, unbeschreibliche Bohnen und Sessel, die Geschichten erzählen. Willkommen im gemütlichsten Eck von Salzburg.">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="grain-overlay"></div>
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <audio id="bean-sound">
+        <source src="audio/sound coffee 1.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Das Röstzimmer.</a>
+            <div class="nav-hub" style="display: flex; align-items: center;">
+                <ul class="nav-links">
+                    <li><a href="index.html">Start</a></li>
+                    <li><a href="produkte.html">Produkte</a></li>
+                    <li><a href="bauern.html">Herkunft</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#space">Laden</a></li>
+                </ul>
+                <button class="cart-toggle" onclick="toggleCart()">
+                    WARENKORB
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <div class="hub-toggle" id="hub-toggle" onclick="toggleMenu()">
+                    <span class="hub-line"></span>
+                    <span class="hub-line"></span>
+                    <span class="hub-line"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fancy Fullscreen Overlay -->
+    <div class="nav-overlay" id="nav-overlay">
+        <div class="overlay-content">
+            <ul class="overlay-menu">
+                <li><a href="index.html" onclick="toggleMenu()">Startseite</a></li>
+                <li><a href="produkte.html" onclick="toggleMenu()">Kaffee Bohnen</a></li>
+                <li><a href="bauern.html" onclick="toggleMenu()">Unsere Bauern</a></li>
+                <li><a href="index.html#shop" onclick="toggleMenu()">Shop</a></li>
+                <li><a href="index.html#space" onclick="toggleMenu()">Der Laden</a></li>
+                <li><a href="index.html#visit" onclick="toggleMenu()">Kontakt</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="hero">
+        <!-- Floating Leaves -->
+        <div class="deco-container">
+            <img src="image/deko 1.png" class="deco-item deco-leaf" style="top: 5%; left: 3%; animation-delay: 0s;"
+                alt="">
+            <img src="image/deko 2.png" class="deco-item deco-leaf" style="top: 80%; right: 5%; animation-delay: -5s;"
+                alt="">
+        </div>
+        <div class="container hero-content">
+            <h1 class="animate-in">Von Hand. <br> Von Herzen.</h1>
+            <p class="hero-tagline">Artisanaler Kaffee aus Salzburg. <br> Jeden Tag frisch in unserer Trommel.</p>
+        </div>
+        <div class="steam-group">
+            <div class="steam" style="left: 20%; animation-delay: 0s;"></div>
+            <div class="steam" style="left: 50%; animation-delay: 2s;"></div>
+            <div class="steam" style="left: 80%; animation-delay: 4s;"></div>
+        </div>
+    </header>
+
+    <section id="shop" class="section-padding">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="animate-in">Frisch aus der Trommel</h2>
+                <p>Unsere aktuellen Röstungen. Versand auf Rechnung – direkt zu dir nach Hause.</p>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Curated Concept Store Section -->
+    <section class="curated-section section-padding">
+        <div class="container" style="text-align: center;">
+            <h2 class="animate-in">Feinkost & Handwerk</h2>
+            <p class="animate-in" style="max-width: 700px; margin: 0 auto 4rem; opacity: 0.7;">
+                Neben unserem frisch gerösteten Urkaffee kuratieren wir eine Auswahl an besonderen Schätzen von kleinen
+                Manufakturen, die unsere Leidenschaft für Qualität und Handwerk teilen.
+            </p>
+
+            <div class="curated-grid">
+                <!-- Item 1: Ceramics -->
+                <div class="curated-item animate-in">
+                    <span class="curated-badge">Neu eingetroffen</span>
+                    <h4>Keramik & Ästhetik</h4>
+                    <p>Wunderschöne Keramik von <strong>Grün & Form</strong>. Zeitlose Designs in Farben, die das
+                        Auge beruhigen und den Kaffeegenuss perfekt abrunden.</p>
+                </div>
+
+                <!-- Item 2: Sweets -->
+                <div class="curated-item animate-in">
+                    <h4>Süße Begleiter</h4>
+                    <p>Exzellente Schokoladen von <strong>Zotter</strong>, feine Kreationen von <strong>Pichler</strong>
+                        aus Sillian
+                        oder innovative Rohschokolade. Dazu unsere legendären <strong>Waldviertler Mohnzelten</strong>.
+                    </p>
+                </div>
+
+                <!-- Item 3: Delikatessen -->
+                <div class="curated-item animate-in">
+                    <h4>Feine Kulinarik</h4>
+                    <p>Hausgemachte <strong>Marmeladen</strong> aus der Steiermark, Bio-Honig und hochwertiges
+                        <strong>Leinöl</strong> aus kontrolliert biologischem Anbau von Christina Schühmann.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="space" class="section-padding"
+        style="background: var(--color-midnight); color: var(--color-mist); position: relative; overflow: hidden;">
+        <!-- Stem Accent -->
+        <img src="image/deko 3.png" class="deco-item deco-stem"
+            style="bottom: -100px; left: -50px; transform: rotate(-20deg);" alt="">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto 5rem; text-align: center;">
+                <h2 class="animate-in">Kein Sessel wie der andere</h2>
+                <p class="animate-in" style="font-size: 1.2rem; opacity: 0.8; line-height: 1.8;">
+                    In unserem Röstzimmer findest du keinen Sessel zweimal. Jeder Platz hat seine eigene Seele, genau
+                    wie unsere Kaffees. Genieße deinen Urkaffee in einer Atmosphäre, die so individuell ist wie du
+                    selbst.
+                </p>
+                <a href="#visit" class="btn btn-white animate-in"
+                    style="margin-top: 3rem; display: inline-block;">Besuche uns
+                    in Salzburg</a>
+            </div>
+
+            <div class="eclectic-grid"
+                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem;">
+                <div class="furniture-item" style="border-radius: 40px 10px 30px 5px; overflow: hidden; height: 300px;">
+                    <img src="image/röst 1.png" alt="Röstung 1" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="furniture-item" style="border-radius: 10px 30px 5px 40px; overflow: hidden; height: 300px;">
+                    <img src="image/röst 2.png" alt="Röstung 2" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="furniture-item" style="border-radius: 30px 5px 40px 10px; overflow: hidden; height: 300px;">
+                    <img src="image/röst 3.png" alt="Röstung 3" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visit" class="section-padding" style="position: relative; overflow: hidden;">
+        <!-- More deco -->
+        <img src="image/deko 3.png" class="deco-item deco-leaf"
+            style="top: 20%; right: -50px; transform: rotate(45deg); opacity: 0.3;" alt="">
+        <div class="container" style="text-align: center;">
+            <h2>Mitten in Salzburg</h2>
+            <p>Wolf-Dietrich Straße 15, 5020 Salzburg <br> Mo-Sa: 09:00 - 18:00</p>
+        </div>
+    </section>
+
+    <footer style="position: relative;">
+        <!-- Footer deco -->
+        <img src="image/deko 3.png" class="deco-item deco-leaf"
+            style="bottom: 10%; left: 5%; width: 100px; opacity: 0.15; animation-delay: -3s;" alt="">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo">Das Röstzimmer</div>
+                    <p style="margin-top: 1.5rem;">Handwerkliche Röstkunst im Herzen von Salzburg. Jede Bohne eine
+                        Geschichte.</p>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <p><a href="index.html#visit">Trommelröstung</a></p>
+                    <p><a href="produkte.html">Versand-Service</a></p>
+                    <p><a href="index.html#space">Barista Kurse</a></p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <p><a href="index.html#shop">Unsere Kaffees</a></p>
+                    <p><a href="bauern.html">Unsere Bauern</a></p>
+                    <p><a href="index.html#space">Das Röstzimmer</a></p>
+                </div>
+                <div>
+                    <h4>Rechtliches</h4>
+                    <p><a href="impressum.html">Impressum</a></p>
+                    <p><a href="impressum.html#datenschutz">Datenschutz</a></p>
+                    <p><a href="impressum.html">AGB</a></p>
+                </div>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Das Röstzimmer Salzburg. Versand auf Rechnung. <br>
+                Webdesign Handcrafted by Fatih Klavun <a href="https://www.fatdesign.at" target="_blank"
+                    style="color: inherit; text-decoration: underline; opacity: 0.8;">FATDESIGN</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Drawer -->
+    <div class="drawer-overlay" id="drawer-overlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header" id="cart-header">
+            <h3>Warenkorb</h3>
+            <button onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-footer" id="cart-checkout-section">
+            <div class="cart-total">
+                <span>Gesamt</span>
+                <span id="cart-total-price">0.00 €</span>
+            </div>
+            <button class="btn btn-primary btn-full" style="margin-top: 2rem;" onclick="showCheckout()">Zur Kasse (auf
+                Rechnung)</button>
+        </div>
+
+        <!-- Premium Checkout Form (Initially Hidden) -->
+        <div id="checkout-form" style="display: none;">
+            <h3>Deine Daten</h3>
+            <p style="opacity: 0.6; font-size: 0.8rem; margin-bottom: 1rem;">Bestellung erfolgt bequem auf Rechnung.</p>
+            <form id="order-form" onsubmit="handleOrder(event)">
+                <div class="form-group">
+                    <label>Vorname & Nachname</label>
+                    <input type="text" required id="name">
+                </div>
+                <div class="form-group">
+                    <label>E-Mail</label>
+                    <input type="email" required id="email">
+                </div>
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="tel" required id="phone">
+                </div>
+
+                <h4 class="form-section-head">Lieferadresse</h4>
+                <div class="form-group">
+                    <label>Strasse & Hausnummer</label>
+                    <input type="text" required id="address">
+                </div>
+                <div class="form-group">
+                    <label>PLZ & Stadt</label>
+                    <input type="text" required id="city">
+                </div>
+                <div class="form-group">
+                    <label>Land</label>
+                    <input type="text" required id="country" value="Österreich">
+                </div>
+
+                <h4 class="form-section-head">Anmerkung</h4>
+                <div class="form-group">
+                    <label style="text-transform: none; letter-spacing: normal;">Falls die Rechnungsadresse von der
+                        Lieferadresse abweicht oder Sie andere Anmerkungen haben:</label>
+                    <textarea id="notes" placeholder="Ihre Wünsche hier eintragen..."></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" required id="agb-check">
+                    <label for="agb-check">
+                        Ja, ich stimme den <a href="impressum.html">Allgemeinen Geschäftsbedingungen</a> zu und bin mit
+                        der Verarbeitung meiner Daten laut <a href="impressum.html#datenschutz">Datenschutzerklärung</a>
+                        einverstanden.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">KOSTENPFLICHTIG BESTELLEN</button>
+            </form>
+        </div>
+
+        <div id="success-msg" style="display: none; text-align: center; margin-top: 4rem;">
+            <h2>Vielen Dank!</h2>
+            <p>Deine Bohnen gehen bald auf Reisen. Die Rechnung liegt der Bestellung bei.</p>
+            <button class="btn btn-primary" onclick="playBeanSound(); window.location.reload()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Urkaffee Helle Röstung",
+                weight: "1000g",
+                price: 28.90,
+                tags: ["Hell geröstet", "Bio-Zertifiziert", "Artisanal"],
+                img: "image/kaffee 1.png",
+                desc: "Bio-zertifiziert (AT-BIO-301) und nachhaltig in Waldgärten angebaut. Sortenreine Bio-Arabica Bohnen; von Hand gepflückt. Dank traditioneller Trommelröstung magenschonend und bekömmlich. Blumige Note mit Schokolade.",
+                profile: { intensity: 3, chocolate: 4, floral: 5 }
+            },
+            {
+                id: 2,
+                name: "Urkaffee Dunkle Röstung",
+                weight: "1000g",
+                price: 28.90,
+                tags: ["Dunkel geröstet", "Bio-Zertifiziert", "Intensiv"],
+                img: "image/kaffee 2.png",
+                desc: "Bio-zertifiziert (AT-BIO-301) und nachhaltig in Waldgärten angebaut. Sortenreine Bio-Arabica Bohnen; von Hand gepflückt. Dank traditioneller Trommelröstung magenschonend und bekömmlich. Blumige Note mit Schokolade.",
+                profile: { intensity: 5, chocolate: 5, floral: 3 }
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('urkaffee_cart')) || [];
+
+        function saveCart() {
+            localStorage.setItem('urkaffee_cart', JSON.stringify(cart));
+        }
+
+        // UI Initialization
+        function init() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map(p => {
+                return `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${p.img}" alt="${p.name}">
+                    </div>
+                    <div class="product-info">
+                        <div class="flavor-tags">
+                            ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                        <h3>${p.name}</h3>
+                        <p style="font-size: 0.8rem; opacity: 0.6;">${p.weight}</p>
+                        <p class="product-desc">${p.desc}</p>
+                        <p class="product-price">${p.price.toFixed(2)} €</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: auto;">
+                        <a href="produkte.html" class="btn btn-secondary" style="flex: 1;" onclick="playBeanSound()">Details</a>
+                        <button class="btn btn-primary" style="flex: 1.5;" onclick="addToCart(${p.id})">Kaufen</button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // Cart Logic
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('active');
+            document.getElementById('drawer-overlay').classList.toggle('active');
+            playBeanSound();
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            saveCart();
+            updateCart();
+            playBeanSound();
+            if (!document.getElementById('cart-drawer').classList.contains('active')) toggleCart();
+        }
+
+        function playBeanSound() {
+            const sound = document.getElementById('bean-sound');
+            if (!sound) return;
+            sound.currentTime = 0;
+            sound.play().catch(e => console.log("Audio blocked by browser"));
+        }
+
+        updateCart();
+
+
+
+        function updateCart() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const itemsList = document.getElementById('cart-items');
+            itemsList.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div>
+                        <h4>${item.name}</h4>
+                        <p>${item.price.toFixed(2)} €</p>
+                    </div>
+                    <button class="btn-remove" onclick="removeFromCart(${index})">ENTFERNEN</button>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cart-total-price').innerText = total.toFixed(2) + ' €';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            updateCart();
+            playBeanSound();
+        }
+
+        // Checkout Logic
+        function showCheckout() {
+            if (cart.length === 0) return alert("Warenkorb ist leer!");
+            document.getElementById('cart-checkout-section').style.display = 'none';
+            document.getElementById('cart-items').style.display = 'none';
+            document.getElementById('checkout-form').style.display = 'block';
+        }
+
+        function handleOrder(e) {
+            e.preventDefault();
+            document.getElementById('checkout-form').style.display = 'none';
+            document.getElementById('cart-header').style.display = 'none';
+            document.getElementById('success-msg').style.display = 'block';
+            cart = [];
+            saveCart();
+            updateCart();
+            playBeanSound();
+        }
+
+        // Fancy Menu Logic
+        function toggleMenu() {
+            const overlay = document.getElementById('nav-overlay');
+            const toggle = document.getElementById('hub-toggle');
+            overlay.classList.toggle('active');
+            toggle.classList.toggle('active');
+
+            // Lock background scroll when menu is active
+            document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : 'auto';
+
+            playBeanSound();
+        }
+
+        // Custom Cursor Logic
+        const cursor = document.getElementById('custom-cursor');
+        let mouseX = 0, mouseY = 0;
+        let ballX = 0, ballY = 0;
+        let speed = 0.4; // Faster, snappier movement
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        window.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+        window.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+
+        function animateCursor() {
+            let distX = mouseX - ballX;
+            let distY = mouseY - ballY;
+
+            ballX = ballX + (distX * speed);
+            ballY = ballY + (distY * speed);
+
+            cursor.style.left = ballX + "px";
+            cursor.style.top = ballY + "px";
+
+            // Subtle rotation based on movement
+            const rotation = (mouseX - ballX) * 0.5;
+            cursor.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Navbar scroll effect (Smart Nav)
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+
+            if (scrollTop > lastScrollTop && scrollTop > 400) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Initialize animations and navbar
+        function initApp() {
+            init(); // Product grid
+
+            document.querySelectorAll('section, .feature-card, .product-card').forEach(el => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(30px)";
+                el.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
+                observer.observe(el);
+            });
+        }
+
+        // Custom CSS addition for the observer effect
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .animate-in {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax Effect for Decorations
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            document.querySelectorAll('.deco-item').forEach(item => {
+                const speed = item.classList.contains('deco-stem') ? 0.2 : 0.1;
+                item.style.transform = `translateY(${scrolled * speed}px) rotate(${(scrolled * 0.05) % 360}deg)`;
+            });
+        });
+
+        // Removed global initApp call to avoid double execution (handled in load listener)
+    </script>
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-text">
+            <h4>Bohnen & Daten</h4>
+            <p style="margin-top: 0.5rem;">Wir nutzen technisch notwendige Daten (Warenkorb), um Ihnen den bestmöglichen
+                Service zu bieten. Details finden Sie in unserer <a
+                    href="impressum.html#datenschutz">Datenschutzerklärung</a>.</p>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="acceptCookies()">Verstanden</button>
+    </div>
+
+    <script>
+        // Cookie Banner Logic
+        function checkCookies() {
+            if (!localStorage.getItem('urkaffee_consent_v2')) {
+                setTimeout(() => {
+                    const banner = document.getElementById('cookie-banner');
+                    if (banner) banner.classList.add('active');
+                }, 800);
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('urkaffee_consent_v2', 'true');
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.classList.remove('active');
+                setTimeout(() => {
+                    banner.classList.add('hidden-complete');
+                }, 1000);
+            }
+            playBeanSound();
+        }
+
+        // Initialize App
+        window.addEventListener('load', () => {
+            initApp();
+            checkCookies();
+        });
+    </script>
+</body>
+
+</html>
